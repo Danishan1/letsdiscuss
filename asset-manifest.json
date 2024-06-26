@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/letsdiscuss/static/css/main.c18fa487.css",
+    "main.js": "/letsdiscuss/static/js/main.2241e02e.js",
+    "index.html": "/letsdiscuss/index.html",
+    "main.c18fa487.css.map": "/letsdiscuss/static/css/main.c18fa487.css.map",
+    "main.2241e02e.js.map": "/letsdiscuss/static/js/main.2241e02e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c18fa487.css",
+    "static/js/main.2241e02e.js"
+  ]
+}
