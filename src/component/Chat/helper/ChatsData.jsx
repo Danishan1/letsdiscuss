@@ -100,28 +100,28 @@ const ChatsData = [
     msgData:
       "The project is ongoing, and additional features will be introduced in the future. Please note that the Enter button is currently disabled due to server unavailability.",
     isSent: true,
-    idDateTime: { id: "~id2023", date: "Jan 21 2024", time: "9:35 AM" },
+    idDateTime: { id: "~id2023", date: "June 21 2024", time: "9:35 AM" },
     type: "text",
   },
-  {
-    sender: { name: "Salhil", dp: "../../img/defaultDp.jpg" },
-    msgData: [
-      {
-        endTime: "03:15 PM",
-        location: "In-Office",
-        meetingDate: "17-05-2024",
-        notification: "30 minutes before",
-        participants: ["PARTCI01", "PARTCI02", "PARTCI03", "PARTCI04"],
-        purpose: "Requirement gathering regarding construction project",
-        recurrence: "None",
-        startTime: "02:15 PM",
-        title: "CEO Meting",
-      },
-    ],
-    isSent: false,
-    idDateTime: { id: "~id2023", date: "Jan 22 2024", time: "9:35 AM" },
-    type: "meet",
-  },
+  // {
+  //   sender: { name: "Salhil", dp: "../../img/defaultDp.jpg" },
+  //   msgData: [
+  //     {
+  //       endTime: "03:15 PM",
+  //       location: "In-Office",
+  //       meetingDate: "17-05-2024",
+  //       notification: "30 minutes before",
+  //       participants: ["PARTCI01", "PARTCI02", "PARTCI03", "PARTCI04"],
+  //       purpose: "Requirement gathering regarding construction project",
+  //       recurrence: "None",
+  //       startTime: "02:15 PM",
+  //       title: "CEO Meting",
+  //     },
+  //   ],
+  //   isSent: false,
+  //   idDateTime: { id: "~id2023", date: "Jan 22 2024", time: "9:35 AM" },
+  //   type: "meet",
+  // },
 
   // Add more chat data as needed
 ];
