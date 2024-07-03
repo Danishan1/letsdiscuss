@@ -97,6 +97,14 @@ const ChatsData = [
   },
   {
     sender: { name: "Salhil", dp: "../../img/defaultDp.jpg" },
+    msgData:
+      "The project is ongoing, and additional features will be introduced in the future. Please note that the Enter button is currently disabled due to server unavailability.",
+    isSent: true,
+    idDateTime: { id: "~id2023", date: "Jan 21 2024", time: "9:35 AM" },
+    type: "text",
+  },
+  {
+    sender: { name: "Salhil", dp: "../../img/defaultDp.jpg" },
     msgData: [
       {
         endTime: "03:15 PM",

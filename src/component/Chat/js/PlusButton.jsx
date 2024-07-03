@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import IconSetter from "../helper/IconSetter";
 import style from "../css/PlusButton.module.css";
 import {
@@ -26,8 +26,9 @@ const PlusButton = ({ setPlusClickContent }) => {
   const alertRef = useRef(null);
 
   const [alertContainer, setAlertContainer] = useState([]);
-  const [uploadedFile, setUploadedFile] = useState();
+  const [uploadedFile, setUploadedFile] = useState([]);
 
+  // Handle Plus Icon
   const handlePlusClick = () => {
     setPlusClickContent();
   };
@@ -46,6 +47,8 @@ const PlusButton = ({ setPlusClickContent }) => {
       handleFileClick(fileInputRef);
     }
   };
+
+  console.log(uploadedFile);
 
   return (
     <div className={style.plusButton}>
@@ -81,7 +84,7 @@ const PlusButton = ({ setPlusClickContent }) => {
         icon={media}
         name={"Media"}
         clickHandle={() => {
-          handleIconClick("media");
+          // setPlusClickContent(handleIconClick("media"));
           onfileClick("media");
         }}
       />
@@ -89,7 +92,7 @@ const PlusButton = ({ setPlusClickContent }) => {
         icon={fileUpload}
         name={"Document"}
         clickHandle={() => {
-          handleIconClick("document");
+          // setPlusClickContent(handleIconClick("document"));
           onfileClick("doc");
         }}
       />
@@ -97,7 +100,7 @@ const PlusButton = ({ setPlusClickContent }) => {
         icon={directShare}
         name={"Direct Share"}
         clickHandle={() => {
-          handleIconClick("directShare");
+          // setPlusClickContent(handleIconClick("directShare"));
           onfileClick("all");
         }}
       />
