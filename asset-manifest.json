@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/letsdiscuss/static/css/main.0a740b21.css",
-    "main.js": "/letsdiscuss/static/js/main.cceb1aeb.js",
+    "main.js": "/letsdiscuss/static/js/main.f4637665.js",
     "index.html": "/letsdiscuss/index.html",
     "main.0a740b21.css.map": "/letsdiscuss/static/css/main.0a740b21.css.map",
-    "main.cceb1aeb.js.map": "/letsdiscuss/static/js/main.cceb1aeb.js.map"
+    "main.f4637665.js.map": "/letsdiscuss/static/js/main.f4637665.js.map"
   },
   "entrypoints": [
     "static/css/main.0a740b21.css",
-    "static/js/main.cceb1aeb.js"
+    "static/js/main.f4637665.js"
   ]
 }
