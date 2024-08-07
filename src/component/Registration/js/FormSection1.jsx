@@ -1,23 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import InputField from "./InputField";
-import style from "../css/RegisterUserForm.module.css";
+import style from "../css/RegisterForm.module.css";
+import Loading from "../../SpecialPages/js/Loading";
 import { Button } from "./Button";
 import { validateEmail, validateMobile } from "../helper/Validation";
+import axios from "axios";
 
 export const FormSection1 = ({
   setFormData,
   formData,
   showAlert,
   setFormFillStep,
-  setFormVisiblity,
 }) => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleGetOTP = async (type, purpose, userName, verificationId) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/getOTP",
+        {
+          type,
+          purpose,
+          userName,
+          verificationId,
+        }
+      );
+
+      if (response.data.code === "INFO01" || response.data.code === "ERR01") {
+        showAlert(response.data.message, "error");
+        return false;
+      }
+      return true;
+    } catch (error) {
+      console.log(error);
+      showAlert("Failed to send OTP. Please try again.", "error");
+      return false;
+    }
+  };
+
   const move2Section2 = async (e) => {
     e.preventDefault();
+
     let isValid = true;
 
     if (!validateEmail(formData.email)) {
@@ -27,15 +57,46 @@ export const FormSection1 = ({
 
     if (!validateMobile(formData.mobile)) {
       showAlert("Invalid mobile number. Must be 10 digits.", "error");
-
       isValid = false;
     }
 
     if (!isValid) return;
 
+    setLoading(true);
+
+    // OTP for Email Verification
+    isValid = await handleGetOTP(
+      "email",
+      "verification",
+      formData.name,
+      formData.email
+    );
+
+    if (!isValid) {
+      setLoading(false);
+      return;
+    }
+
+    // OTP for Mobile Verification
+    isValid = await handleGetOTP(
+      "mobile",
+      "verification",
+      formData.name,
+      formData.email
+    );
+
+    if (!isValid) {
+      setLoading(false);
+      return;
+    }
+
+    setLoading(false);
+
     showAlert("Great, Let's verify your details...", "success");
     setFormFillStep(1);
   };
+
+  if (loading) return <Loading position="absolute" />;
 
   return (
     <div className={style.formSection}>
@@ -68,14 +129,14 @@ export const FormSection1 = ({
       />
       <InputField
         label="Designation"
-        type="designation"
+        type="text"
         name="designation"
         value={formData.designation}
         onChange={handleChange}
       />
       <div className={style.btnRapper}>
         <Button text={"Verify Details"} onClick={move2Section2} />
-        <Button text={"Login"} onClick={() => setFormVisiblity("login")} />
+        <Button text={"Login"} onClick={() => navigate("/login")} />
       </div>
     </div>
   );

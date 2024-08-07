@@ -2,13 +2,12 @@
     display: flex;
 }
 
-.sectionA {
+/* .sectionA {
     border: 1px solid #685b36;
-    width:4vw;
-}
+    width: 4vw;
+} */
 
 .sectionB {
-    border: 1px solid #363968;
     width: 41vw;
 }
 
@@ -24,11 +23,12 @@
     }
 
     .sectionC {
-        width: 50vw;
+        /* width: 50vw; */
+        width: 55vw;
     }
 }
 
-@media (width < 800px) {
+@media (width < 890px) {
 
     .sectionA {
         display: none;
@@ -50,11 +50,19 @@
     }
 
     .sectionB {
-        display: none;
-        width: 10vw;
+        width: 100vw;
     }
 
     .sectionC {
+        display: none;
         width: 100vw;
+    }
+
+    .openSection {
+        display: flex;
+    }
+
+    .closeSection {
+        display: none;
     }
 }

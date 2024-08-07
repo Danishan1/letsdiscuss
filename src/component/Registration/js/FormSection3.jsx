@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react";
-// import PasswordField from "./PasswordField";
-import style from "../css/RegisterUserForm.module.css";
+import React, { useEffect } from "react";
+
+import style from "../css/RegisterForm.module.css";
 import { Button } from "./Button";
-import generatePasscode from "../helper/generatePasscode.js";
-import generateUserId from "../helper/generateID.js";
+import { useNavigate } from "react-router-dom";
 
-export const FormSection3 = ({ showAlert }) => {
-  // const [password, setPassword] = useState("");
-
-  const handleSubmit = (userID, passCode) => {
-    // It happens that  Due to Error or any failure, unable to login right away, then redirect to login page
-    showAlert(`Login Successfully, ${userID}`, "success");
-  };
-
-  const [passCode, setPassCode] = useState();
-  const [userId, setUserId] = useState();
+export const FormSection3 = ({ formData, showAlert }) => {
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setPassCode(generatePasscode());
-    setUserId(generateUserId());
+    localStorage.removeItem("formData");
+    localStorage.removeItem("formFillStep");
   }, []);
+
+  const handleSubmit = (name) => {
+    showAlert(`Register Successfully, ${name}. Kindly Login now`, "success");
+    navigate("/discuss");
+  };
 
   return (
     <div className={style.formSection}>
@@ -31,16 +27,19 @@ export const FormSection3 = ({ showAlert }) => {
       </p>
       <p className={style.userId}>
         <span className="colorCyan boldL2">User ID: </span>
-        {userId}
+        {formData.userId}
       </p>
 
       <p className={style.userId}>
         <span className="colorCyan boldL2">Passcode: </span>
-        {passCode}
+        {formData.passcode}
       </p>
 
       <div className={style.btnRapper}>
-        <Button text={"Login"} onClick={() => handleSubmit(userId, passCode)} />
+        <Button
+          text={"Let's Login"}
+          onClick={() => handleSubmit(formData.name)}
+        />
       </div>
     </div>
   );

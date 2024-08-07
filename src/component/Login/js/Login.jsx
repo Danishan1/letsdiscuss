@@ -1,39 +1,34 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import AlertContainer from "../../Registration/js/AlertContainer";
 import style from "../css/Login.module.css";
 import PasswordField from "./PasswordField";
 import InputField from "../../Registration/js/InputField";
 import { Button } from "../../Registration/js/Button";
+import axios from "axios";
 
-const UserForm = ({ setFormVisibility }) => {
+const LoginForm = () => {
   const [alertContainer, setAlertContainer] = useState([]);
+  const navigate = useNavigate();
 
-  const getUserID = (userID) => {
-    return "123456";
-  };
-  const getPasscodeName = (userID) => {
-    return ["654321", "Danishan"];
-  };
-
-  const verifyDetails = (userId, passcode) => {
-    const USERID = getUserID(userId);
-    let UserName = "";
-    if (USERID !== userID) {
-      showAlert(
-        "Invalid User ID. Please check your User ID again or register.",
-        "error"
+  const verifyDetails = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        { userID, password },
+        { withCredentials: true }
       );
-      return false;
-    } else if (USERID === userID) {
-      const [PASSCODE, NAME] = getPasscodeName(userID);
-      UserName = NAME;
-      if (PASSCODE !== passcode) {
-        showAlert("Wrong Pass Code", "error");
+      if (response.data.code === "INVALID") {
+        showAlert(
+          "Invalid credentials. Please check your User ID & Password again or Register.",
+          "error"
+        );
         return false;
-      } else {
-        showAlert(`Welcome, ${UserName}`, "success");
-        return true;
       }
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   };
 
@@ -46,19 +41,19 @@ const UserForm = ({ setFormVisibility }) => {
 
   const [userID, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setUserId(value);
+
+  const handleLogin = async () => {
+    const isLogin = await verifyDetails();
+
+    if (isLogin) {
+      navigate("/discuss"); // Navigate to ChatApp page on successful login
+    }
   };
 
-  const handleLogin = () => {
-    verifyDetails(userID, password);
-  };
   const handleRegister = () => {
-    setFormVisibility("register");
+    navigate("/register"); // Navigate to Register page
   };
 
-  // const [formFillStep, setFormFillStep] = useState(0);
   return (
     <div className={style.formRapper}>
       <div className={style.userForm}>
@@ -77,7 +72,7 @@ const UserForm = ({ setFormVisibility }) => {
               type="text"
               name="userID"
               value={userID}
-              onChange={handleChange}
+              onChange={(e) => setUserId(e.target.value)}
               required={true}
             />
             <PasswordField
@@ -88,7 +83,7 @@ const UserForm = ({ setFormVisibility }) => {
             />
             <div className={style.btnRapper}>
               <Button text={"Login"} onClick={handleLogin} />
-              <Button text={"Register"} onClick={() => handleRegister()} />
+              <Button text={"Register"} onClick={handleRegister} />
             </div>
           </div>
         </form>
@@ -97,4 +92,4 @@ const UserForm = ({ setFormVisibility }) => {
   );
 };
 
-export default UserForm;
+export default LoginForm;

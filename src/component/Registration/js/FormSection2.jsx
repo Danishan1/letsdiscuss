@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
-import style from "../css/RegisterUserForm.module.css";
+import style from "../css/RegisterForm.module.css";
 import { Button } from "./Button";
 import OtpField from "./OtpField";
+import axios from "axios";
+import Loading from "../../SpecialPages/js/Loading";
 
-export const FormSection2 = ({ formData, showAlert, setFormFillStep }) => {
-  const mobileOTP = "123456";
-  const mailOTP = "654321";
-
+export const FormSection2 = ({
+  formData,
+  setFormData,
+  showAlert,
+  setFormFillStep,
+}) => {
   const [mobileVerified, setMobileVerified] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
   const [mobileErrorShown, setMobileErrorShown] = useState(false);
   const [emailErrorShown, setEmailErrorShown] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [mobileOtp, setMobileOtp] = useState("");
   const [emailOtp, setEmailOtp] = useState("");
 
@@ -22,23 +27,67 @@ export const FormSection2 = ({ formData, showAlert, setFormFillStep }) => {
     setEmailErrorShown(false);
   }, [emailOtp]);
 
+  const verifyOTP = async (otp, type, verificationId) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/verifyOTP",
+        {
+          otp,
+          type,
+          verificationId,
+        }
+      );
+
+      return response.data.isValid;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
+  const register = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        {
+          ...formData,
+        }
+      );
+
+      if (response.data.code === "SUCC") {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          userId: response.data.userId,
+          passcode: response.data.password,
+        }));
+        showAlert("Registration Successful!", "success");
+        setFormFillStep(2);
+      }
+    } catch (error) {
+      console.log(error);
+      showAlert("Registration Failed!", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const move2Section3 = async (e) => {
     e.preventDefault();
     if (mobileVerified && emailVerified) {
-      showAlert("OTP Verified!", "success");
-      setFormFillStep(2);
+      setLoading(true); // Set loading state to true
+      await register(); // Register user
     } else {
       if (!mobileVerified && !emailVerified)
         showAlert("Please verify both Mobile and Email OTPs.", "error");
-      else if (!mobileVerified)
-        showAlert("Please verify Mobile OTPs.", "error");
+      else if (!mobileVerified) showAlert("Please verify Mobile OTP.", "error");
       else showAlert("Please verify Email OTP.", "error");
     }
   };
 
-  const handleMobileChange = (otp) => {
+  const handleMobileChange = async (otp) => {
     setMobileOtp(otp);
-    if (mobileOTP === otp) {
+    const isVerified = await verifyOTP(otp, "mobile", formData.email);
+    if (isVerified) {
       if (!mobileVerified) {
         showAlert("Mobile OTP verified successfully!", "success");
         setMobileVerified(true);
@@ -51,9 +100,10 @@ export const FormSection2 = ({ formData, showAlert, setFormFillStep }) => {
     }
   };
 
-  const handleEmailChange = (otp) => {
+  const handleEmailChange = async (otp) => {
     setEmailOtp(otp);
-    if (mailOTP === otp) {
+    const isVerified = await verifyOTP(otp, "email", formData.email);
+    if (isVerified) {
       if (!emailVerified) {
         showAlert("Email OTP verified successfully!", "success");
         setEmailVerified(true);
@@ -65,6 +115,8 @@ export const FormSection2 = ({ formData, showAlert, setFormFillStep }) => {
       setEmailErrorShown(true);
     }
   };
+
+  if (loading) return <Loading position="absolute" />;
 
   return (
     <div className={`${style.formSection} ${style.formSection2}`}>
