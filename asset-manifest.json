@@ -1,13 +1,46 @@
 {
   "files": {
-    "main.css": "/letsdiscuss/static/css/main.0a740b21.css",
-    "main.js": "/letsdiscuss/static/js/main.f4637665.js",
+    "main.css": "/letsdiscuss/static/css/main.e8905fa3.css",
+    "main.js": "/letsdiscuss/static/js/main.877dd53e.js",
+    "static/css/745.ed7a5fb8.chunk.css": "/letsdiscuss/static/css/745.ed7a5fb8.chunk.css",
+    "static/js/745.168e47cb.chunk.js": "/letsdiscuss/static/js/745.168e47cb.chunk.js",
+    "static/css/37.5ad1afd4.chunk.css": "/letsdiscuss/static/css/37.5ad1afd4.chunk.css",
+    "static/js/37.5b4ed58b.chunk.js": "/letsdiscuss/static/js/37.5b4ed58b.chunk.js",
+    "static/css/625.ab4d3029.chunk.css": "/letsdiscuss/static/css/625.ab4d3029.chunk.css",
+    "static/js/625.26a0d78b.chunk.js": "/letsdiscuss/static/js/625.26a0d78b.chunk.js",
+    "static/css/695.b1580222.chunk.css": "/letsdiscuss/static/css/695.b1580222.chunk.css",
+    "static/js/695.83a8a748.chunk.js": "/letsdiscuss/static/js/695.83a8a748.chunk.js",
+    "static/css/484.c94beef0.chunk.css": "/letsdiscuss/static/css/484.c94beef0.chunk.css",
+    "static/js/484.b48bbc37.chunk.js": "/letsdiscuss/static/js/484.b48bbc37.chunk.js",
+    "static/css/401.efbaefce.chunk.css": "/letsdiscuss/static/css/401.efbaefce.chunk.css",
+    "static/js/401.725dc53e.chunk.js": "/letsdiscuss/static/js/401.725dc53e.chunk.js",
+    "static/css/195.a07b0c63.chunk.css": "/letsdiscuss/static/css/195.a07b0c63.chunk.css",
+    "static/js/195.00ff33e2.chunk.js": "/letsdiscuss/static/js/195.00ff33e2.chunk.js",
+    "static/css/910.09faac6f.chunk.css": "/letsdiscuss/static/css/910.09faac6f.chunk.css",
+    "static/js/910.4d267f37.chunk.js": "/letsdiscuss/static/js/910.4d267f37.chunk.js",
+    "static/media/defaultDp.jpg": "/letsdiscuss/static/media/defaultDp.c697435c57e8d3223a5c.jpg",
     "index.html": "/letsdiscuss/index.html",
-    "main.0a740b21.css.map": "/letsdiscuss/static/css/main.0a740b21.css.map",
-    "main.f4637665.js.map": "/letsdiscuss/static/js/main.f4637665.js.map"
+    "main.e8905fa3.css.map": "/letsdiscuss/static/css/main.e8905fa3.css.map",
+    "main.877dd53e.js.map": "/letsdiscuss/static/js/main.877dd53e.js.map",
+    "745.ed7a5fb8.chunk.css.map": "/letsdiscuss/static/css/745.ed7a5fb8.chunk.css.map",
+    "745.168e47cb.chunk.js.map": "/letsdiscuss/static/js/745.168e47cb.chunk.js.map",
+    "37.5ad1afd4.chunk.css.map": "/letsdiscuss/static/css/37.5ad1afd4.chunk.css.map",
+    "37.5b4ed58b.chunk.js.map": "/letsdiscuss/static/js/37.5b4ed58b.chunk.js.map",
+    "625.ab4d3029.chunk.css.map": "/letsdiscuss/static/css/625.ab4d3029.chunk.css.map",
+    "625.26a0d78b.chunk.js.map": "/letsdiscuss/static/js/625.26a0d78b.chunk.js.map",
+    "695.b1580222.chunk.css.map": "/letsdiscuss/static/css/695.b1580222.chunk.css.map",
+    "695.83a8a748.chunk.js.map": "/letsdiscuss/static/js/695.83a8a748.chunk.js.map",
+    "484.c94beef0.chunk.css.map": "/letsdiscuss/static/css/484.c94beef0.chunk.css.map",
+    "484.b48bbc37.chunk.js.map": "/letsdiscuss/static/js/484.b48bbc37.chunk.js.map",
+    "401.efbaefce.chunk.css.map": "/letsdiscuss/static/css/401.efbaefce.chunk.css.map",
+    "401.725dc53e.chunk.js.map": "/letsdiscuss/static/js/401.725dc53e.chunk.js.map",
+    "195.a07b0c63.chunk.css.map": "/letsdiscuss/static/css/195.a07b0c63.chunk.css.map",
+    "195.00ff33e2.chunk.js.map": "/letsdiscuss/static/js/195.00ff33e2.chunk.js.map",
+    "910.09faac6f.chunk.css.map": "/letsdiscuss/static/css/910.09faac6f.chunk.css.map",
+    "910.4d267f37.chunk.js.map": "/letsdiscuss/static/js/910.4d267f37.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a740b21.css",
-    "static/js/main.f4637665.js"
+    "static/css/main.e8905fa3.css",
+    "static/js/main.877dd53e.js"
   ]
 }
